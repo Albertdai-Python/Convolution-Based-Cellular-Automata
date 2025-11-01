@@ -33,12 +33,14 @@ def convolve(data, kernel):
 
 
 # Kernel (Can be customized to shape n x n with odd number n)
+'''
 kernel = np.array([
 [0.03, 0.13, 0.22, 0.22, 0.03],
 [0.13, 0.61, 0.98, 0.61, 0.13],
 [0.22, 0.98, 1, 0.98, 0.22],
 [0.13, 0.61, 0.98, 0.61, 0.13],
 [0.03, 0.13, 0.22, 0.13, 0.03]])
+'''
 # 17x17 Gaussian Kernel
 kernel = np.array([
  [0.011, 0.018, 0.030, 0.048, 0.073, 0.106, 0.145, 0.183, 0.213, 0.230, 0.230, 0.213, 0.183, 0.145, 0.106, 0.073, 0.048],
@@ -86,7 +88,9 @@ def init():
     return[im]
 
 def animate(i):
+    # Using self-programmed convolution
     next_frame = convolve(im.get_array(), kernel)
+    # Using scipy convolution
     # next_frame = np.clip(im.get_array() + dt * growth(convolve2d(im.get_array(), kernel, mode='same', boundary='wrap')), 0, 1)
     im.set_data(next_frame)
     return [im]
